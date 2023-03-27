@@ -1,12 +1,13 @@
 const { app, ipcMain } = require("electron");
-const { createMainWindow } = require("./src/components/windows/main-window.js");
 const { createAppMenu } = require("./src/components/menus/app-menu");
+const { createMainWindow } = require("./src/components/windows");
 
-app.whenReady().then(() => {
+app.on('ready', () => {
   createMainWindow();
   createAppMenu();
 
-  ipcMain.on("key", (err, data) => {
+  ipcMain.on("input:value", (err, data) => {
     console.log(data);
   });
+
 });

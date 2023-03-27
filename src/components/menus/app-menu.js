@@ -1,4 +1,5 @@
 const { Menu } = require("electron");
+const { createAboutWindow } = require("../windows");
 
 function createAppMenu() {
   const appMenu = Menu.buildFromTemplate(appMenuTemplate);
@@ -16,6 +17,15 @@ const appMenuTemplate = [
       },
     ],
   },
+  {
+    label: "Kömək",
+    submenu: [
+      {
+        label: "Haqqımızda",
+        click: createAboutWindow
+      },
+    ]
+  }
 ];
 
 if (process.env.NODE_ENV !== "production") {

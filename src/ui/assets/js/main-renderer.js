@@ -1,7 +1,8 @@
 const { ipcRenderer } = require("electron");
 
-const sendBtn = document.getElementById("sendBtn");
+const addBtn = document.getElementById("addTodoBtn");
+const todoInput = document.getElementById("todoInput");
 
-sendBtn.addEventListener("click", () => {
-  ipcRenderer.send("key", "Hello World");
+addBtn.addEventListener("click", function () {
+  ipcRenderer.send("mainWindow:action:addNewTodo", todoInput.value);
 });
